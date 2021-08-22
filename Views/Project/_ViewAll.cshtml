@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Project_ITHoot.Models.ProjectModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameOfProject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeOfProject)
+            </th>
+            <th>
+                <a onclick="showInPopup('@Url.Action("AddOrEdit","Project", null, Context.Request.Scheme)','New Project')" class="btn btn-success text-white">Create New</a>
+            </th
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameOfProject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeOfProject)
+                </td>
+                <td>
+                    <a onclick="showInPopup('@Url.Action("AddOrEdit","Project", new { id = item.IdProject }, Context.Request.Scheme)','Update Project')" class="btn btn-info text-white">Edit</a>
+                    <form asp-action="Delete" asp-route-id="@item.IdProject" onsubmit="return jQueryAjaxDelete(this);" class="d-inline">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

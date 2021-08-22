@@ -1,0 +1,35 @@
+﻿@model Project_ITHoot.Models.ProgrammersAndProjects
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ProgrammersAndProjects</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit" asp-route-id="@Model.IdProgrammer" onsubmit="return jQueryAjaxPost(this);" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdProgrammer" />
+            <div class="form-group">
+                <label asp-for="IdProgrammer" class="control-label"></label>
+                <input asp-for="IdProgrammer" class="form-control" />
+                <span asp-validation-for="IdProgrammer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdProject" class="control-label"></label>
+                <input asp-for="IdProject" class="form-control" />
+                <span asp-validation-for="IdProject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary btn-block" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

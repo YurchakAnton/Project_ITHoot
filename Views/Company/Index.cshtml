@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Project_ITHoot.Models.CompanyModel>
+
+@{
+    ViewData["Title"] = "Companies";
+}
+
+<h1>Companies</h1>
+
+<div id="view-all">
+    @await Html.PartialAsync("_ViewAll", Model)
+</div>
+

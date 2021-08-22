@@ -1,0 +1,43 @@
+﻿@model Project_ITHoot.Models.ProgrammersAndProjects
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Details">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdProgrammer" />
+            <div class="form-group">
+                <label asp-for="ProgrammersModel.FullName" class="control-label"></label>
+                <input asp-for="ProgrammersModel.FullName" class="form-control" readonly />
+                <span asp-validation-for="ProgrammersModel.FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProgrammersModel.Position" class="control-label"></label>
+                <input asp-for="ProgrammersModel.Position" class="form-control" readonly />
+                <span asp-validation-for="ProgrammersModel.Position" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProgrammersModel.Activity" class="control-label"></label>
+                <input asp-for="ProgrammersModel.Activity" class="form-control" readonly />
+                <span asp-validation-for="ProgrammersModel.Activity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProjectsModel.NameOfProject" class="control-label"></label>
+                <input asp-for="ProjectsModel.NameOfProject" class="form-control" readonly />
+                <span asp-validation-for="ProjectsModel.NameOfProject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="button" value="OK" class="btn btn-primary btn-block" data-dismiss="modal" aria-label="Close" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

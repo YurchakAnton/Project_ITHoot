@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Project_ITHoot.Models.ProgrammersAndProjects>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProgrammersModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectsModel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProgrammersModel.IdProgrammer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProgrammersModel.FullName)
+            </td>
+            <td>
+                //@Html.DisplayFor(modelItem => item.ProjectsModel.NameOfProject)
+            </td>
+            <td>
+                <a onclick="showInPopup('@Url.Action("Details","ProgrammersAndProjects", new { id = item.ProgrammersModel.IdProgrammer }, Context.Request.Scheme)','Update Programmer')" class="btn btn-info text-white">Edit</a>
+                @Html.ActionLink("Details", "Details", new { id = item.IdProgrammer }) |
+                <form asp-action="Delete" asp-route-id="@item.IdProgrammer" onsubmit="return jQueryAjaxDelete(this);" class="d-inline">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

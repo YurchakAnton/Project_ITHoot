@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Project_ITHoot.Models.ProgrammerModel>
+
+@{
+    ViewData["Title"] = "Programmers";
+}
+
+<h1>Programmers</h1>
+
+<div id="view-all">
+    @await Html.PartialAsync("_ViewAll", Model)
+</div>
+

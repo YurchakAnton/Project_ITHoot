@@ -1,0 +1,40 @@
+﻿@model Project_ITHoot.Models.ProgrammersAndProjects
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" onsubmit="return jQueryAjaxPost(this);" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdProgrammer" class="control-label"></label>
+                @*<select class="form-control" asp-items="@ViewBag.IdProgrammer" disabled>
+                    <option>
+                        @ViewData["id"]
+                    </option>
+                </select>*@
+                <input asp-for="IdProgrammer" class="form-control" value="@ViewData["Id"]" readonly/>
+            </div>
+
+            @*<div class="form-group">
+            <label asp-for="IdProgrammer" class="control-label"></label>
+            <input asp-for="@ViewData["id"]" class="form-control" readonly />
+            <span asp-validation-for="IdProgrammer" class="text-danger"></span>
+        </div>*@
+            <div class="form-group">
+                <label asp-for="IdProject" class="control-label"></label>
+                <select asp-for="IdProject" class="form-control" asp-items="ViewBag.IdProject"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
